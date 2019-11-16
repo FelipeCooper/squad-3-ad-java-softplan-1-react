@@ -1,1 +1,1 @@
-export const isAuthenticated = () =>false; // Logica de autenticação
+export const isAuthenticated = () =>true; // Logica de autenticação
