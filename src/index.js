@@ -1,11 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
+import Routes from './routes/Routes'
 
-function App() {
-    return (
-      <div>
-        <h1>Inicio ErrorLoger</h1>
-      </div>
-    );
-  }
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<Routes />, document.getElementById('root'))
