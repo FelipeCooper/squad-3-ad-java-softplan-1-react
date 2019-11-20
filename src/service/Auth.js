@@ -1,4 +1,16 @@
-export const isAuthenticated = () =>localStorage.getItem('TOKEN_KEY') !== null; // Logica de autenticação
+import api from "./api"
+export const isAuthenticated = async () => {
+    try {
+        let request = await api('/auth/refresh_token', {
+            method: "POST"
+        })
+        login(request.headers.authorization);
+        return true ;
+    }catch(err) {
+        logout()
+        return false;
+    }
+}
 export const getToken = () => localStorage.getItem('TOKEN_KEY');
 export const login = (token) => localStorage.setItem('TOKEN_KEY', token);
 export const logout = () => localStorage.removeItem('TOKEN_KEY');

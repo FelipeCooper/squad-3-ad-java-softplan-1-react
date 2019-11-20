@@ -6,8 +6,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async config => {
-    config.headers.Authorization = `Basic Y29kZW5hdGlvbjoxMjM=`;
-    
+    config.headers.Authorization = getToken();
   return config;
 });
 

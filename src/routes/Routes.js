@@ -1,9 +1,8 @@
 import React from 'react';
 import Login from '../pages/Login'
-import Panel from '../pages/Panel'
+import Panel from '../pages/Home'
 import {BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoutes from './PrivateRoutes';
-
 
 const Routes =  () =>(
     <BrowserRouter>
