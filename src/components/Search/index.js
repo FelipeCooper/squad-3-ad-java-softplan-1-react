@@ -5,7 +5,7 @@ import api from '../../service/api'
 export default function Search({functionData: functionData}) {
     const [options, setOptions] = useState({
         text: '',
-        environment: "PRODUCTION",
+        environment: "",
         searchParam: 'title'
     })
     function submitSearch(){

@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import api from '../../service/api'
 import TableError from '../../components/TableError'
 import Search from "../../components/Search"
+import Loading from '../../components/Loading'
 export default function Panel() {
     const [data, setData] = useState([])
-    
-
     useEffect(() => {
         function fetchData() {
             api('/v1/error/aggregates').then(response => {
