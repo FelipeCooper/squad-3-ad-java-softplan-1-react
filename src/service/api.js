@@ -11,3 +11,4 @@ api.interceptors.request.use(async config => {
 });
 
 export default api;
+export const delay = (time)=> new Promise(resolve => setTimeout(resolve, time));

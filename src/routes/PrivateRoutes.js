@@ -11,7 +11,7 @@ export default class PrivateRoute extends React.Component {
           }
         }
         componentDidMount() {
-          isAuthenticated().then((isAuthenticated) => {
+          Promise.resolve(isAuthenticated()).then((isAuthenticated) => {
             this.setState({
               loading: false,
               isAuthenticated

@@ -23,10 +23,15 @@ export default function Search({functionData: functionData}) {
         <>
             <input type="text" onChange={ev=>{setOptions({ ...options, text:ev.target.value.toUpperCase()})}} />
             <select onChange={ev=>{setOptions({ ...options, environment:ev.target.value})}}>
-                <option selected disabled hidden>Selecione um opçao</option>
+                <option selected disabled hidden>Selecione o ambiente</option>
                 <option value="PRODUCTION">Produção</option>
                 <option value="HOMOLOGATION">Homologação</option>
                 <option value="DEVELOPMENT">Desenvolvimento</option>
+            </select>
+            <select onChange={ev=>{setOptions({ ...options, environment:ev.target.value})}}>
+                <option selected disabled hidden>Ordenador por</option>
+                <option value="PRODUCTION">Produção</option>
+                <option value="HOMOLOGATION">Homologação</option>
             </select>
             <select onChange={ev=>{setOptions({...options, searchParam:ev.target.value  })}}>
                 <option selected disabled hidden>Buscar Por</option>
