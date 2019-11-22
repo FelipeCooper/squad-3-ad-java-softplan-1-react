@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "axios": "^0.19.0",
+    "history": "^4.10.1",
     "qs": "^6.9.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
