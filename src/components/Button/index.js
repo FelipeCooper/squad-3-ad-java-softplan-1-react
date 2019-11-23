@@ -1,9 +1,9 @@
 import  React from 'react';
-import Button from 'react-bootstrap/Button'
+import Button from 'antd/es/button';
 
 
 const ButtonDefault = ({text : text, ...rest}) =>(
-    <Button {...rest} variant="dark">{text}</Button>
+    <Button {...rest} type="primary">{text}</Button>
 )
 
 export default ButtonDefault;
