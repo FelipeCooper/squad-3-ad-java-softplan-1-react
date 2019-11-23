@@ -1,8 +1,9 @@
 import  React from 'react';
+import Button from 'react-bootstrap/Button'
 
-const Button = ({text : text, ...rest}) =>(
 
-    <button {...rest}>{text}</button>
+const ButtonDefault = ({text : text, ...rest}) =>(
+    <Button {...rest} variant="dark">{text}</Button>
 )
 
-export default Button;
+export default ButtonDefault;

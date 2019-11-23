@@ -3,8 +3,7 @@ import Button from '../../components/Button'
 import axios from 'axios'
 import { login } from '../../service/Auth'
 import { Redirect } from 'react-router-dom';
-
-
+import Form from 'react-bootstrap/Form'
 export default function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -24,18 +23,27 @@ export default function Login() {
             login(token)
             console.log("aqui", logged)
             setLogged(true);
-        } catch(error){
+        } catch (error) {
             console.log(error)
-            return(alert("Usuario ou senha Invalidos"))
+            return (alert("Usuario ou senha Invalidos"))
         }
     }
     return (
-        <>
-        {logged? <Redirect to="/" /> : null}
-            <input type="text" placeholder="Email" onChange={(ev) => setEmail(ev.target.value)} /><br />
-            <input type="password" placeholder="Senha" onChange={(ev) => setPassword(ev.target.value)} /><br />
-            <Button text="Logar" onClick={Autentication} />
-        </>
+            <div className='box'>
+                <Form>
+                    <h2 style={{textAlign:"center"}}>LOGIN</h2>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control onChange={(ev) => setEmail(ev.target.value)} type="email" placeholder="Enter email" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Senha</Form.Label>
+                        <Form.Control onChange={(ev) => setPassword(ev.target.value)} type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Button onClick={Autentication} text={"Logar"} />
+                </Form>
+                {logged ? <Redirect to="/" /> : null}
+            </div>
     )
 }
 

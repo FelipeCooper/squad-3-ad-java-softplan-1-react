@@ -19,9 +19,9 @@ export default function Panel() {
         return (<Redirect to={{pathname: path, location:history }}/>)
     }
 return (
-    <>
+    <div className='box' style={{width:'60%'}}>
         <Search functionData={setData} />
         {TableError(data, setSearch)}
-    </>
+    </div>
 )
 }
