@@ -1,6 +1,7 @@
 import React from 'react';
 import { isAuthenticated } from "../service/Auth";
-import {  Route, Redirect } from 'react-router-dom';
+import {  Route } from 'react-router';
+import history from './History'
 import Loading from '../components/Loading';
 export default class PrivateRoute extends React.Component {
         constructor(props) {
@@ -30,7 +31,7 @@ export default class PrivateRoute extends React.Component {
                     this.state.loading ? (
                       <Loading loading={true}></Loading>
                       ) : (
-                        <Redirect to={{ pathname: '/login', state: { from: this.props.location } }} />
+                        history.push('/login')
                       )
                   )
               }

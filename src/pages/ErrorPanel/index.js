@@ -6,19 +6,17 @@ const ErrorPanel = () => {
     let { id } = useParams();
     const [data, setData] = useState([]);
     useEffect(() => {
-        async function fetchData() {
-            let search = await SearchOne(id);
-            setData((search))
-            console.log(search)
-        }
+        async function fetchData() {setData((await SearchOne(id)))}
         fetchData()
     }, [])
 
     return (
         <>  
         {data.map(err=>{
-            return(
-                <h1>{err.title}</h1>
+            return(<>
+                <h1>{err.title}</h1><br></br>
+                <h1>{err.origin}</h1>
+                </>
             )
         })}
 

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Button from '../../components/Button'
 import axios from 'axios'
+import history from '../../routes/History'
 import { login } from '../../service/Auth'
-import { Redirect } from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 export default function Login() {
     const [email, setEmail] = useState();
@@ -42,7 +42,7 @@ export default function Login() {
                     </Form.Group>
                     <Button onClick={Autentication} text={"Logar"} />
                 </Form>
-                {logged ? <Redirect to="/" /> : null}
+                {logged ? history.push('/'): null}
             </div>
     )
 }

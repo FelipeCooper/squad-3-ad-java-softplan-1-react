@@ -1,12 +1,11 @@
 import React, { useState, useEffect} from 'react';
-import {Redirect, useHistory,useLocation} from 'react-router-dom';
+import history from '../../routes/History'
 import TableError from '../../components/TableError';
 import Search from "../../components/Search";
 import {SearchService} from "../../service/SearchService";
-export default function Panel() {
+export default function Home() {
     const [data, setData] = useState([])
     const [search, setSearch] = useState(null)
-    const history = useHistory();
     useEffect(() => {
         async function fetchData() {
             let response = await SearchService();
@@ -16,7 +15,7 @@ export default function Panel() {
     }, [])
     if(search != null){
         let path = "/error/"+search;
-        return (<Redirect to={{pathname: path, location:history }}/>)
+        return (history.push(path))
     }
 return (
     <div className='box' style={{width:'60%'}}>
