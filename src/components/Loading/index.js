@@ -3,8 +3,11 @@ import React from "react"
 export default function Loader({ loading: loading }) {
     const color = "#000"
     return (
-        <div style={{width:"100%", bottom:'0', position:'absolute', textAlign:"center"}}>
-            <BallBeat loading={loading} color={color}></BallBeat>
+        <div className='container'>
+            <div className='box' style={{ border:'none', textAlign: "center",bottom:'0' }}>
+                <BallBeat loading={loading} color={color}></BallBeat>
+            </div>
         </div>
+
     )
 }

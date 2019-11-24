@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import Button from '../../components/Button'
 import axios from 'axios'
 import history from '../../routes/History'
-import navBar from '../../components/NavBar'
 import { login } from '../../service/Auth'
-import { Form, Icon, Input, Checkbox } from 'antd';
+import { Form, Icon, Input } from 'antd';
 
 export default function Login({ form: getFieldDecorator }) {
     const [email, setEmail] = useState();
@@ -47,7 +46,7 @@ export default function Login({ form: getFieldDecorator }) {
                     </Form.Item>
                     <Form.Item>
                         <Button onClick={ev => { Autentication() }} text="Logar" /><br />
-                        <a className="login-form-forgot" href="">Esqueci minha senha</a><br/>
+                        <a className="login-form-forgot" style={{color:'gray'}}>Esqueci minha senha</a><br/>
                     </Form.Item>
                 </Form>
 

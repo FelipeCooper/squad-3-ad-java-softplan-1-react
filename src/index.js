@@ -7,7 +7,7 @@ import Header from './components/Header'
 ReactDOM.render(
         <div>
                 <Header />
-                <div style={{margin:'5em'}}>
+                <div>
                         <Routes />
                 </div>
         </div>
