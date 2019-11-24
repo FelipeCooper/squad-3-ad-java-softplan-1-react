@@ -3,7 +3,8 @@ import Button from '../../components/Button'
 import axios from 'axios'
 import history from '../../routes/History'
 import { login } from '../../service/Auth'
-import Form from 'react-bootstrap/Form'
+import { Form, Icon, Input } from 'antd';
+
 export default function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -23,27 +24,38 @@ export default function Login() {
             login(token)
             console.log("aqui", logged)
             setLogged(true);
+
         } catch (error) {
             console.log(error)
             return (alert("Usuario ou senha Invalidos"))
         }
     }
     return (
-            <div className='box'>
-                <Form>
-                    <h2 style={{textAlign:"center"}}>LOGIN</h2>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <Form.Control onChange={(ev) => setEmail(ev.target.value)} type="email" placeholder="Enter email" />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Senha</Form.Label>
-                        <Form.Control onChange={(ev) => setPassword(ev.target.value)} type="password" placeholder="Password" />
-                    </Form.Group>
-                    <Button onClick={Autentication} text={"Logar"} />
+        <div className="container">
+            <navBar></navBar>
+            <div className='box' style={{ width:'300px', textAlign: 'center' }}>
+
+                <h1>Login</h1>
+                <Form onSubmit={(ev) => { Autentication() }} className="login-form">
+                    <Form.Item>
+                        <Input onChange={(ev) => { setEmail(ev.target.value) }}
+                            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />
+                    </Form.Item>
+                    <Form.Item>
+                        <Input onChange={(ev) => { setPassword(ev.target.value) }} prefix=
+                            {<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                    </Form.Item>
+                    <Form.Item>
+                        <Button onClick={ev => { Autentication() }} text="Logar" /><br />
+                        <a className="login-form-forgot" style={{color:'gray'}}>Esqueci minha senha</a><br/>
+                    </Form.Item>
                 </Form>
-                {logged ? history.push('/'): null}
+
+
+
             </div>
+            {logged ? history.push('/') : null}
+        </div>
     )
 }
 

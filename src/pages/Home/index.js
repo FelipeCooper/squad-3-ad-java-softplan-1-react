@@ -1,9 +1,10 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import history from '../../routes/History'
 import TableError from '../../components/TableError';
 import Search from "../../components/Search";
-import {SearchService} from "../../service/SearchService";
-export default function Home() {
+import { SearchService } from "../../service/SearchService";
+import {Empty} from 'antd'
+export default function Home(history) {
     const [data, setData] = useState([])
     const [search, setSearch] = useState(null)
     useEffect(() => {
@@ -13,14 +14,17 @@ export default function Home() {
         }
         fetchData()
     }, [])
-    if(search != null){
-        let path = "/error/"+search;
-        return (history.push(path))
+    if (search != null) {
+        let path = "/error/" + search;
+        history.push(path)
     }
-return (
-    <div className='box' style={{width:'60%'}}>
-        <Search functionData={setData} />
-        {TableError(data, setSearch)}
-    </div>
-)
+    return (
+        <div className="container">
+            <div>
+                <Search functionData={setData} />
+                {data.length == 0 ? <Empty description="Nenhum rro encontrado"/>: TableError(data, setSearch)}
+            </div>
+        </div>
+
+    )
 }
