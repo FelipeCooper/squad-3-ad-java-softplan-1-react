@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 import Header from './components/Header'
 ReactDOM.render(
         <div>
-                <Header />
+                <Header/>
                 <div>
                         <Routes />
                 </div>

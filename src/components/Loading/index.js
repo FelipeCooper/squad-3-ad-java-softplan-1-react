@@ -4,7 +4,7 @@ export default function Loader({ loading: loading }) {
     const color = "#000"
     return (
         <div className='container'>
-            <div className='box' style={{ border:'none', textAlign: "center",bottom:'0' }}>
+            <div style={{marginTop:'18em'}}>
                 <BallBeat loading={loading} color={color}></BallBeat>
             </div>
         </div>

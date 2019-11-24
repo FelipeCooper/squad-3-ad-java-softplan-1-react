@@ -5,7 +5,7 @@ import history from '../../routes/History'
 import { login } from '../../service/Auth'
 import { Form, Icon, Input } from 'antd';
 
-export default function Login({ form: getFieldDecorator }) {
+export default function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [logged, setLogged] = useState(false)
@@ -24,6 +24,7 @@ export default function Login({ form: getFieldDecorator }) {
             login(token)
             console.log("aqui", logged)
             setLogged(true);
+
         } catch (error) {
             console.log(error)
             return (alert("Usuario ou senha Invalidos"))
