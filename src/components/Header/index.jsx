@@ -10,13 +10,14 @@ export default function Header() {
         top: '0',
         backgroundColor: 'silver',
         border: '2px solid rgb(20, 20, 20)',
-        borderRadius: '5px'
-
+        borderRadius: '5px',
+        zIndex:'2',
+        height:'60px'
     }
     return (
         <div>
-            <PageHeader style={option} >
-                <img style={{ float: 'left' }} src={Logo} width={50} alt="Logotipo da Codenation" />
+            <PageHeader style={option}>
+                <img style={{ float: 'left',marginTop:'0' }} src={Logo} width={40} alt="Logotipo da Codenation" />
                 {isAuthenticated() ? <p style={{ textAlign: 'right' }}></p> : null}
             </PageHeader>
         </div>

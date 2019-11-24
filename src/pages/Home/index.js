@@ -15,10 +15,10 @@ export default function Home() {
     }, [])
     if(search != null){
         let path = "/error/"+search;
-        return (history.push(path))
+        history.push(path)
     }
 return (
-    <div className='box' style={{width:'60%'}}>
+    <div >
         <Search functionData={setData} />
         {TableError(data, setSearch)}
     </div>

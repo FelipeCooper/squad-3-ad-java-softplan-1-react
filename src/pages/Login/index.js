@@ -33,7 +33,7 @@ export default function Login({ form: getFieldDecorator }) {
     return (
         <div className="container">
             <navBar></navBar>
-            <div className='box' style={{ textAlign: 'center' }}>
+            <div className='box' style={{ width:'300px', textAlign: 'center' }}>
 
                 <h1>Login</h1>
                 <Form onSubmit={(ev) => { Autentication() }} className="login-form">
@@ -46,8 +46,8 @@ export default function Login({ form: getFieldDecorator }) {
                             {<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
                     </Form.Item>
                     <Form.Item>
-                        <a className="login-form-forgot" href="">Esqueci minha senha</a>
                         <Button onClick={ev => { Autentication() }} text="Logar" /><br />
+                        <a className="login-form-forgot" href="">Esqueci minha senha</a><br/>
                     </Form.Item>
                 </Form>
 
