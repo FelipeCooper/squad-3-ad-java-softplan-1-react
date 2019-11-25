@@ -1,13 +1,13 @@
 import React from 'react'
 import { Select } from 'antd'
 
-export default function Select({ options: options, function: setData}) {
+export default function Selecter({ options: options, ...rest}) {
     const {Option} = Select;
     return (
-        <Select onChange={(ev)=>{setData(ev.target.value)}}>
+        <Select {...rest}>
             {options.map(opt => {
                 return (
-                    <Option key={opt.key}>{opt.value}</Option>
+                    <Option key={opt.key} value={opt.key}> {opt.value}</Option>
                 )
             })}
         </Select>
