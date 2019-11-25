@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../Button';
-import {SearchService} from '../../service/SearchService'
+import { SearchService } from '../../service/SearchService'
+import {Select} from 'antd'
 
 export default function Search({ functionData: functionData }) {
+    const {Option} = Select;
     const [options, setOptions] = useState({
         text: '',
         environment: '',
@@ -15,6 +17,9 @@ export default function Search({ functionData: functionData }) {
     }
     return (
         <>
+            <Select size='default' defaultValue="a1"  style={{ width: 200 }}>
+                <Option key='1'>teste</Option>
+             </Select>
             <input type="text" onChange={ev => { setOptions({ ...options, text: ev.target.value.toUpperCase() }) }} />
             <select onChange={ev => { setOptions({ ...options, environment: ev.target.value }) }}>
                 <option defaultValue disabled hidden>Selecione o ambiente</option>
