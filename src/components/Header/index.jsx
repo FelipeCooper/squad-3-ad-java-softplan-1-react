@@ -29,7 +29,7 @@ export default function Header() {
                 <b style={{ float: "right" }}>
                     Bem vindo Usuario, esse é
                     <Popover style={{ float: 'right' }} placement='bottomRight' content={logged} arrowPointAtCenter >
-                        <a style={{ color: 'red' }}> seu Token</a>
+                        <a style={{ color: 'black' }}> seu Token</a>
                     </Popover>
                 </b>: null}
 

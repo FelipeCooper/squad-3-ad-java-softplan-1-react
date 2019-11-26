@@ -4,7 +4,7 @@ import TableError from '../../components/TableError';
 import Search from "../../components/Search";
 import { SearchService } from "../../service/SearchService";
 import {Empty} from 'antd'
-export default function Home(history) {
+export default function Home() {
     const [data, setData] = useState([])
     const [search, setSearch] = useState(null)
     useEffect(() => {
@@ -22,7 +22,7 @@ export default function Home(history) {
         <div className="container">
             <div>
                 <Search functionData={setData} />
-                {data.length == 0 ? <Empty description="Nenhum rro encontrado"/>: TableError(data, setSearch)}
+                {data.length == 0 ? <Empty description="Nenhum erro encontrado"/>: TableError(data, setSearch)}
             </div>
         </div>
 

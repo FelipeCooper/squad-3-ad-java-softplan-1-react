@@ -1,38 +1,48 @@
 import React, { useState, useEffect } from 'react'
 import Button from '../Button';
-import {SearchService} from '../../service/SearchService'
+import { SearchService } from '../../service/SearchService'
+import Select from '../Select'
+import {Input} from 'antd'
 
-export default function Search({ functionData: functionData }) {
+export default function SearchModel({ functionData: functionData }) {
+    const { Search } = Input;
     const [options, setOptions] = useState({
         text: '',
         environment: '',
         searchParam: 'title',
         order: ''
     })
+    const environment = [
+        { key: 'PRODUCTION', value: 'Produção' },
+        { key: 'HOMOLOGATION', value: 'Homologação' },
+        { key: 'DEVELOPMENT', value: 'Desenvolvimento' }
+    ]
+    const order = [
+        { key: 'level', value: 'Level' },
+        { key: 'events', value: 'Eventos' }
+    ]
+    const searchParam = [
+        { key: 'level', value: 'Level' },
+        { key: 'origin', value: 'Origem' }
+    ]
     async function submitSearch() {
         let data = await SearchService(options)
         functionData(data);
     }
     return (
         <>
-            <input type="text" onChange={ev => { setOptions({ ...options, text: ev.target.value.toUpperCase() }) }} />
-            <select onChange={ev => { setOptions({ ...options, environment: ev.target.value }) }}>
-                <option defaultValue disabled hidden>Selecione o ambiente</option>
-                <option value="PRODUCTION">Produção</option>
-                <option value="HOMOLOGATION">Homologação</option>
-                <option value="DEVELOPMENT">Desenvolvimento</option>
-            </select>
-            <select onChange={ev => { setOptions({ ...options, order: ev.target.value }) }}>
-                <option disabled selected hidden>Ordenador por</option>
-                <option value="level">Level</option>
-                <option value="events">Frequência</option>
-            </select>
-            <select onChange={ev => { setOptions({ ...options, searchParam: ev.target.value }) }}>
-                <option selected value="title">Titulo</option>
-                <option value="level">Level</option>
-                <option value="origin">Origem</option>
-            </select>
-            <Button text="Buscar" onClick={ev => { submitSearch() }} />
+            <Select defaultValue="Ambiente " style={{ width: 200 }} options={environment}
+                onChange={ev => { setOptions({ ...options, environment: ev }) }} />
+            <Select defaultValue="Ordenado por" style={{ width: 200 }} options={order}
+                onChange={ev => { setOptions({ ...options, order: ev }) }} />
+            <Select defaultValue="Buscar por" style={{ width: 200 }} options={searchParam}
+                onChange={ev => { setOptions({ ...options, searchParam: ev }) }} />
+            <Search
+                placeholder=""
+                onSearch={ev => { submitSearch() }}
+                onChange={ev => { setOptions({ ...options, text: ev.target.value.toUpperCase() }) }}
+                style={{ width: 250 }}
+            />
         </>
     )
 }
