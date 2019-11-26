@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button'
-import { Table } from 'antd'
+import { Table,Icon } from 'antd'
 import api from '../../service/api'
 
 export default function TableError(data, functionClicked, setPage) {
@@ -70,8 +70,8 @@ export default function TableError(data, functionClicked, setPage) {
   return (
     <div>
       <div style={{ marginBottom: 16, marginTop: 16 }}>
-        <Button text="Deletar" onClick={ev => { deleteError() }} />
-        <Button text="Arquivar" onClick={ev => { archieveError() }} />
+        <Button text={<Icon type="delete"/>} onClick={ev => { deleteError() }} />
+        <Button text={<Icon type="inbox"/>} onClick={ev => { archieveError() }} />
       </div>
       <Table pagination={ pagination } columns={columns}
         rowSelection={rowSelection}

@@ -22,7 +22,7 @@ export default function SearchModel({ functionData: functionData, options:option
     ]
 
     return (
-        <>
+        <div style={{marginTop:16}}>
             <Select defaultValue="Ambiente " style={{ width: 200 }} options={environment}
                 onChange={ev => { setOptions({ ...options, environment: ev }) }} />
             <Select defaultValue="Ordenado por" style={{ width: 200 }} options={order}
@@ -35,6 +35,6 @@ export default function SearchModel({ functionData: functionData, options:option
                 onChange={ev => { setOptions({ ...options, text: ev.target.value.toUpperCase() }) }}
                 style={{ width: 250 }}
             />
-        </>
+        </div>
     )
 }
