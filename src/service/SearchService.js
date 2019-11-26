@@ -1,5 +1,5 @@
 import api from './api'
-export const SearchService = async (options)=>{
+export const SearchService = async (options,page)=>{
     let url = '/v1/error/aggregates'
     if(options != null){
      url = '/v1/error/aggregates?'+
@@ -7,8 +7,11 @@ export const SearchService = async (options)=>{
         "&"+options.searchParam+"="+options.text+
         "&sort="+options.order+",desc";
     }
+    if(page != null){
+        url+= "&page="+(page-1)
+    }
     let request = await api(url);
-    return await request.data.content;
+    return await request;
 }
 
 export const SearchOne = async (id) =>{
