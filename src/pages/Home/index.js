@@ -11,7 +11,7 @@ export default function Home() {
     const [options, setOptions] = useState({
         text: '',
         environment: '',
-        searchParam: 'title',
+        searchParam: '',
         order: ''
     })
     useEffect(()=>{

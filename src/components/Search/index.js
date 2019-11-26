@@ -17,7 +17,8 @@ export default function SearchModel({ functionData: functionData, options:option
     ]
     const searchParam = [
         { key: 'level', value: 'Level' },
-        { key: 'origin', value: 'Origem' }
+        { key: 'origin', value: 'Origem' },
+        { key: 'title', value: 'Titulo' }
     ]
 
     return (
@@ -29,7 +30,7 @@ export default function SearchModel({ functionData: functionData, options:option
             <Select defaultValue="Buscar por" style={{ width: 200 }} options={searchParam}
                 onChange={ev => { setOptions({ ...options, searchParam: ev }) }} />
             <Search
-                placeholder=""
+                placeholder="PESQUISAR"
                 onSearch={ev => { submitSearch() }}
                 onChange={ev => { setOptions({ ...options, text: ev.target.value.toUpperCase() }) }}
                 style={{ width: 250 }}
