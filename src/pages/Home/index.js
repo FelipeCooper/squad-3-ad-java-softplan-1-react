@@ -22,7 +22,7 @@ export default function Home() {
         <div className="container">
             <div>
                 <Search functionData={setData} />
-                {data.length == 0 ? <Empty description="Nenhum rro encontrado"/>: TableError(data, setSearch)}
+                {data.length == 0 ? <Empty description="Nenhum erro encontrado"/>: TableError(data, setSearch)}
             </div>
         </div>
 
