@@ -7,10 +7,23 @@ import {Empty} from 'antd'
 export default function Home() {
     const [data, setData] = useState([])
     const [search, setSearch] = useState(null)
+    const [page, setPage] = useState(0)
+    const [options, setOptions] = useState({
+        text: '',
+        environment: '',
+        searchParam: 'title',
+        order: ''
+    })
+    useEffect(()=>{
+        submitSearch()
+    },[page])
+    async function submitSearch() {
+        let data = await SearchService(options,page)
+        setData(data);
+    }
     useEffect(() => {
         async function fetchData() {
-            let response = await SearchService();
-            setData((response));
+            await setData((await SearchService()));
         }
         fetchData()
     }, [])
@@ -21,8 +34,8 @@ export default function Home() {
     return (
         <div className="container">
             <div>
-                <Search functionData={setData} />
-                {data.length == 0 ? <Empty description="Nenhum erro encontrado"/>: TableError(data, setSearch)}
+                <Search functionData={setData} options={options} submit={submitSearch} setOptions={setOptions} />
+                {data.length == 0 ? <Empty description="Nenhum erro encontrado"/>: TableError(data, setSearch,setPage)}
             </div>
         </div>
 

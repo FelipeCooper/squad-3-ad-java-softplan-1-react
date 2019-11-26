@@ -4,14 +4,8 @@ import { SearchService } from '../../service/SearchService'
 import Select from '../Select'
 import {Input} from 'antd'
 
-export default function SearchModel({ functionData: functionData }) {
+export default function SearchModel({ functionData: functionData, options:options, submit: submitSearch, setOptions:setOptions }) {
     const { Search } = Input;
-    const [options, setOptions] = useState({
-        text: '',
-        environment: '',
-        searchParam: 'title',
-        order: ''
-    })
     const environment = [
         { key: 'PRODUCTION', value: 'Produção' },
         { key: 'HOMOLOGATION', value: 'Homologação' },
@@ -25,10 +19,7 @@ export default function SearchModel({ functionData: functionData }) {
         { key: 'level', value: 'Level' },
         { key: 'origin', value: 'Origem' }
     ]
-    async function submitSearch() {
-        let data = await SearchService(options)
-        functionData(data);
-    }
+
     return (
         <>
             <Select defaultValue="Ambiente " style={{ width: 200 }} options={environment}
