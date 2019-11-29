@@ -11,7 +11,7 @@ const Routes =  () =>(
     <Router history={history}>
         <Switch>
             <Route exact path="/login"  component={Login} />
-            <PrivateRoutes path="/error/:id"  component={ErrorDetail} />
+            <PrivateRoutes path="/error/:id/:events"  component={ErrorDetail} />
             <PrivateRoutes exact path="/" component={Home}/>
             <Route path="*" component={() => <h1>Página não encontrada</h1>} />
         </Switch>

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Button from '../Button';
-import { SearchService } from '../../service/SearchService'
+import React from 'react'
 import Select from '../Select'
 import {Input} from 'antd'
 

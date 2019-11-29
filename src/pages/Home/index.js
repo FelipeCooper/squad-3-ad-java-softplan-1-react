@@ -27,7 +27,7 @@ export default function Home() {
         fetchData()
     }, [])
     if (search != null) {
-        let path = "/error/" + search;
+        let path = "/error/" + search.id +'/'+search.events;
         history.push(path)
     }
     return (

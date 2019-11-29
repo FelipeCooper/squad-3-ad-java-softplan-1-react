@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Routes from './routes/Routes'
 import './style/index.css'
 import 'antd/dist/antd.css'
+import history from './routes/History'
 import Header from './components/Header'
 ReactDOM.render(
         <div>
