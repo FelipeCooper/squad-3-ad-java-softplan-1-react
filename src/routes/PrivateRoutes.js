@@ -29,7 +29,7 @@ export default class PrivateRoute extends React.Component {
                   <Component {...props} />
                 ) : (
                     this.state.loading ? (
-                      <Loading loading={true}></Loading>
+                      <Loading loading={true}/>
                       ) : (
                         history.push('/login')
                       )

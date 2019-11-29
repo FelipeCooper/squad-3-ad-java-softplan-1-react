@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button'
-import { Table } from 'antd'
+import { Table,Icon } from 'antd'
 import api from '../../service/api'
 
 export default function TableError(data, functionClicked, setPage) {
@@ -30,7 +30,7 @@ export default function TableError(data, functionClicked, setPage) {
 
   ];
   const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
+    onClick: (selectedRowKeys, selectedRows) => {
       options = selectedRows;
     }
   };
@@ -42,10 +42,13 @@ export default function TableError(data, functionClicked, setPage) {
           "&title=" + del.title +
           "&origin=" + del.origin +
           "&level=" + del.level;
-        api.delete(url)
+          console.log(url)
+        api.delete(url).then(
+          alert("Erros deletados"),
+          window.location.reload()
+        )
       })
-      alert("Erros deletados")
-      window.location.reload();
+      
     }
   }
   const archieveError = () => {
@@ -59,7 +62,7 @@ export default function TableError(data, functionClicked, setPage) {
         api.patch(url)
       })
       alert("Erros arquivados")
-      window.location.reload();
+      //window.location.reload();
     }
   }
   const pagination = {
@@ -70,13 +73,13 @@ export default function TableError(data, functionClicked, setPage) {
   return (
     <div>
       <div style={{ marginBottom: 16, marginTop: 16 }}>
-        <Button text="Deletar" onClick={ev => { deleteError() }} />
-        <Button text="Arquivar" onClick={ev => { archieveError() }} />
+        <Button text={<Icon type="delete"/>} onClick={ev => { deleteError() }} />
+        <Button text={<Icon type="inbox"/>} onClick={ev => { archieveError() }} />
       </div>
       <Table pagination={ pagination } columns={columns}
         rowSelection={rowSelection}
         onRow={(r) => ({
-          onClick: () => (functionClicked(r.lastErrorId))
+          onClick: () => (functionClicked({id: r.lastErrorId, events: r.events}))
         })}
         dataSource={data.data.content} />
     </div>

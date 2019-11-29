@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Button from '../Button';
-import { SearchService } from '../../service/SearchService'
+import React from 'react'
 import Select from '../Select'
 import {Input} from 'antd'
 
@@ -17,11 +15,12 @@ export default function SearchModel({ functionData: functionData, options:option
     ]
     const searchParam = [
         { key: 'level', value: 'Level' },
-        { key: 'origin', value: 'Origem' }
+        { key: 'origin', value: 'Origem' },
+        { key: 'title', value: 'Titulo' }
     ]
 
     return (
-        <>
+        <div style={{marginTop:16}}>
             <Select defaultValue="Ambiente " style={{ width: 200 }} options={environment}
                 onChange={ev => { setOptions({ ...options, environment: ev }) }} />
             <Select defaultValue="Ordenado por" style={{ width: 200 }} options={order}
@@ -29,11 +28,11 @@ export default function SearchModel({ functionData: functionData, options:option
             <Select defaultValue="Buscar por" style={{ width: 200 }} options={searchParam}
                 onChange={ev => { setOptions({ ...options, searchParam: ev }) }} />
             <Search
-                placeholder=""
+                placeholder="PESQUISAR"
                 onSearch={ev => { submitSearch() }}
                 onChange={ev => { setOptions({ ...options, text: ev.target.value.toUpperCase() }) }}
                 style={{ width: 250 }}
             />
-        </>
+        </div>
     )
 }
