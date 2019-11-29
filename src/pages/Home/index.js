@@ -3,7 +3,6 @@ import history from '../../routes/History'
 import TableError from '../../components/TableError';
 import Search from "../../components/Search";
 import { SearchService } from "../../service/SearchService";
-import {Empty} from 'antd'
 export default function Home() {
     const [data, setData] = useState([])
     const [search, setSearch] = useState(null)
@@ -35,7 +34,7 @@ export default function Home() {
         <div className="container">
             <div>
                 <Search functionData={setData} options={options} submit={submitSearch} setOptions={setOptions} />
-                {data.length == 0 ? <Empty description="Nenhum erro encontrado"/>: TableError(data, setSearch,setPage)}
+                {data.length == 0 ? null : TableError(data, setSearch,setPage)}
             </div>
         </div>
 
