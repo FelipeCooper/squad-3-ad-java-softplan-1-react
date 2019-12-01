@@ -39,14 +39,16 @@ export default function TableError(data, functionClicked, setPage) {
       options.map(del => {
         let url = '/v1/error/aggregates?' +
           "environment=" + del.environment +
-          "&title=" + del.title +
+          "&title=" + del.title.replace(" ", "+") +
           "&origin=" + del.origin +
           "&level=" + del.level;
           console.log(url)
-        api.delete(url).then(
-          alert("Erros deletados"),
-          window.location.reload()
+        api.delete(url).then((res)=>{
+          console.log(res)
+        }
         )
+        alert("Erros deletados")
+        window.location.reload()
       })
       
     }
@@ -56,13 +58,15 @@ export default function TableError(data, functionClicked, setPage) {
       options.map(del => {
         let url = '/v1/error/aggregates/archived?' +
           "environment=" + del.environment +
-          "&title=" + del.title +
+          "&title=" + del.title.replace(" ", "+") +
           "&origin=" + del.origin +
           "&level=" + del.level;
-        api.patch(url)
-      })
-      alert("Erros arquivados")
-      //window.location.reload();
+          api.delete(url).then((res)=>{
+            console.log(res)
+          }
+          )})
+          alert("Erros deletados")
+          window.location.reload()
     }
   }
   const pagination = {
